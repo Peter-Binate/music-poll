@@ -26,3 +26,17 @@ exports.createAMusic = async (req, res) => {
     res.status(500).json({ message: "Erreur serveur" });
   }
 };
+
+exports.getAMusic = async (req, res) => {
+  try {
+    const music = await Music.findById(req.params.id_music);
+
+    // Enregistrez les modifications
+    res.status(200);
+    res.json(music);
+  } catch (error) {
+    res.status(500);
+    console.log(error);
+    res.json({ message: "Erreur serveur" });
+  }
+};
