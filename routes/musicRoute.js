@@ -9,4 +9,6 @@ router
   .get(musicController.listAllMusics)
   .post(musicController.createAMusic);
 
+router.route("/:id_music").get(musicController.getAMusic);
+
 module.exports = router;
