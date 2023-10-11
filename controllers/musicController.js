@@ -58,3 +58,18 @@ exports.updateAMusic = async (req, res) => {
     res.json({ message: "Erreur serveur" });
   }
 };
+
+exports.deleteAMusic = async (req, res) => {
+  try {
+    // On met à jour les champs du post
+    await Music.findByIdAndDelete(req.params.id_music);
+
+    // Enregistrez les modifications
+    res.status(200);
+    res.json({ message: "Article supprimer" });
+  } catch (error) {
+    res.status(500);
+    console.log(error);
+    res.json({ message: "Erreur serveur" });
+  }
+};
