@@ -4,7 +4,9 @@ const router = express.Router();
 
 const musicController = require("../controllers/musicController");
 
-router.route("/").get(musicController.listAllMusics);
-//.post(musicController.createAMusic);
+router
+  .route("/")
+  .get(musicController.listAllMusics)
+  .post(musicController.createAMusic);
 
 module.exports = router;

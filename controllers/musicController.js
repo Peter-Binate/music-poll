@@ -14,3 +14,15 @@ exports.listAllMusics = async (req, res) => {
     res.json({ message: "Erreur serveur" });
   }
 };
+
+exports.createAMusic = async (req, res) => {
+  const newMusic = new Music(req.body);
+
+  try {
+    // On insère les données dans la base de donnée
+    const music = await newMusic.save();
+    res.status(201).json(music);
+  } catch (error) {
+    res.status(500).json({ message: "Erreur serveur" });
+  }
+};
