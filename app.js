@@ -6,9 +6,11 @@ const port = 3000;
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://127.0.0.1:27017/apinode"); // Avec une installation local de mongodb
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+const musicRoute = require("./routes/musicRoute");
+app.use("/musics", musicRoute);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
