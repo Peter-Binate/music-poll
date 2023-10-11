@@ -40,3 +40,21 @@ exports.getAMusic = async (req, res) => {
     res.json({ message: "Erreur serveur" });
   }
 };
+
+exports.updateAMusic = async (req, res) => {
+  try {
+    // On met à jour les champs du post
+    const music = await Music.findByIdAndUpdate(req.params.id_music, req.body, {
+      // empêche de renvoyer l'ancien élément dans postman
+      new: true,
+    });
+
+    // Enregistrez les modifications
+    res.status(200);
+    res.json(music);
+  } catch (error) {
+    res.status(500);
+    console.log(error);
+    res.json({ message: "Erreur serveur" });
+  }
+};

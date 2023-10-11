@@ -9,6 +9,9 @@ router
   .get(musicController.listAllMusics)
   .post(musicController.createAMusic);
 
-router.route("/:id_music").get(musicController.getAMusic);
+router
+  .route("/:id_music")
+  .get(musicController.getAMusic)
+  .put(musicController.updateAMusic);
 
 module.exports = router;
