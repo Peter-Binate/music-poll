@@ -3,9 +3,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let voteSchema = new Schema({
-  vote_number: {
+  vote_rating: {
     type: Number,
     required: true,
+    min: 1,
+    max: 5,
   },
   created_at: {
     type: Date,
